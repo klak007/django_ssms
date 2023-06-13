@@ -1,0 +1,36 @@
+{% extends 'rent/base.html' %}
+{% block content %}
+    <h1>{{ title }}</h1>
+    <div>
+
+        {% if searched %}
+            <h1> Wyszukania dla: {{ searched }} </h1>
+            <br/>
+            {% for bike in bikes %}
+                <div class="card">
+                  <div class="card-header">
+                    Dostępny w {{ bike.id_salonu.miasto }}
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Rower marki {{ bike.marka }}</h5>
+                    <p class="card-text">Rower przeznaczony na teren: {{ bike.rodzaj_roweru }}</p>
+                      <p class="card-text">Cena wypożyczenia pięcio dniowego: {{ bike.koszt }}</p>
+                      <p class="card-text">Wysokość użytkownika: {{ bike.wysokosc }}</p>
+                      <p class="card-text">Rower {{ bike.przeznaczenie_plciowe }}</p>
+                      <p class="card-text">Rama wykonana z {{ bike.material_ramy }}</p>
+                    <a href="#" class="btn btn-primary">Zamów</a>
+                  </div>
+                </div>
+                <br/>
+            {% endfor %}
+        {% else %}
+            <h1> Nic nie wyszukano</h1>
+        {% endif %}
+
+
+        <br/>
+        Copyright (c) {{ current_year }}
+    </div>
+{% endblock %}
+
+

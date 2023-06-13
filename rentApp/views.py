@@ -4,7 +4,8 @@ from calendar import HTMLCalendar
 from datetime import datetime
 from django.http import HttpResponseRedirect
 from .models import Rower, Salon
-from .forms import RowerForm
+from .forms import RowerForm, SalonForm
+from django.db.models import Q
 
 
 def all_bikes(request):
@@ -73,3 +74,23 @@ def list_salons(request):
 def show_salon(request, id_salonu):
     salon = get_object_or_404(Salon, id_salonu=id_salonu)
     return render(request, 'rent/show_salon.html', {'salon': salon})
+
+
+def update_salon(request, id_salonu):
+    salon = get_object_or_404(Salon, id_salonu=id_salonu)
+    form = SalonForm(request.POST or None, instance=salon)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('/list_salon/')
+    return render(request, 'rent/update_salon.html', {'salon': salon, 'form': form})
+
+
+def search_bike(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        bikes = Rower.objects.filter(
+            Q(marka__contains=searched) | Q(kolor__contains=searched) | Q(rodzaj_roweru__contains=searched) | Q(
+                material_ramy__contains=searched) | Q(koszt__contains=searched))
+        return render(request, 'rent/search_bike.html', {'searched': searched, 'bikes': bikes})
+    else:
+        return render(request, 'rent/search_bike.html', {})

@@ -15,4 +15,6 @@ urlpatterns = [
     path('add_bike/', views.add_bike, name="add-bike"),
     path('list_salon/', views.list_salons, name="list-salon"),
     path('show_salon/<int:id_salonu>/', views.show_salon, name="show-salon"),
+    path('search_bike/', views.search_bike, name="search-bike"),
+    path('update_salon/<int:id_salonu>/', views.update_salon, name="update-salon"),
 ]
