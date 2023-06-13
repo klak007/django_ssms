@@ -1,0 +1,16 @@
+{% extends 'rent/base.html' %}
+
+{% block content %}
+    <h1>Nasze salony:</h1>
+    <div style="text-align: center;">
+
+        {% for salon in salon_list %}
+            <a href="{% url 'show-salon' id_salonu=salon.id_salonu %}">
+                <p>Nasz salon nr {{ salon.id_salonu }}: {{ salon.miasto }}, {{ salon.ulica }}</p>
+            </a>
+        {% endfor %}
+        Copyright (c) {{ current_year }}
+    </div>
+{% endblock %}
+
+

@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
 from django.http import HttpResponseRedirect
-from .models import Rower
+from .models import Rower, Salon
 from .forms import RowerForm
 
 
@@ -56,4 +56,20 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
         'current_year': current_year,
         'time': time,
     })
-# Create your views here.
+
+
+def list_salons(request):
+    salon_list = Salon.objects.all()
+    return render(request, 'rent/salon.html', {
+        'salon_list': salon_list,
+    })
+
+
+# def show_salon(request, id_salonu):
+#     salon = Salon.objects.get(pk=id_salonu)
+#     return render(request, 'rent/show_salon.html', {
+#         'salon': salon,
+#     })
+def show_salon(request, id_salonu):
+    salon = get_object_or_404(Salon, id_salonu=id_salonu)
+    return render(request, 'rent/show_salon.html', {'salon': salon})
