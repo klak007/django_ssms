@@ -1,0 +1,74 @@
+{% extends 'rent/base.html' %}
+
+{% block content %}
+    <h1>Rowery do wynajęcia</h1>
+
+
+
+
+
+
+        {% for bike in bikes_list %}
+
+            <div class="card">
+              <div class="card-header">
+                Rower marki <strong>{{ bike.marka }}</strong>
+              </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Dostępne w {{ bike.id_salonu.miasto }}, {{ bike.id_salonu.ulica }} </h5>
+                    <p class="card-text">
+
+                    <style>
+                    .opis {
+                      color: grey;
+                    }
+
+                    .wartosc {
+                      font-size: 1.2em;
+                    }
+                    </style>
+
+                    <p>
+                      <span class="opis">Rower na teren:</span>
+                      <span class="wartosc">{{ bike.rodzaj_roweru }}</span>
+                    </p>
+                    <p>
+                      <span class="opis">Kolor:</span>
+                      <span class="wartosc">{{ bike.kolor }}</span>
+                    </p>
+                    <p>
+                      <span class="opis">Cena:</span>
+                      <span class="wartosc">{{ bike.koszt }}zł/5 dni</span>
+                    </p>
+                    <p>
+                      <span class="opis">Materiał ramy:</span>
+                      <span class="wartosc">{{ bike.material_ramy }}</span>
+                    </p>
+                    <p>
+                      <span class="opis">Rower</span>
+                      <span class="wartosc">{{ bike.przeznaczenie_plciowe }}</span>
+                    </p>
+                    <p>
+                      <span class="opis">Dla osoby o wzroście:</span>
+                      <span class="wartosc">{{ bike.wysokosc }}</span>
+                    </p>
+
+
+
+                    </p>
+                    <a href="#" class="btn btn-primary">Zamów</a>
+                  </div>
+            </div>
+
+
+
+
+
+            <br/>
+        {% endfor %}
+
+
+        <br/>
+        Copyright (c) {{ current_year }}
+
+{% endblock %}
