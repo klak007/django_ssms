@@ -12,4 +12,5 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('<int:year>/<str:month>/', views.home, name="home"),
     path('bikes/', views.all_bikes, name="bikes-list"),
+    path('add_bike/', views.add_bike, name="add-bike"),
 ]

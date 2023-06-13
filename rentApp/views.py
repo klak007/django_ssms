@@ -2,7 +2,9 @@ from django.shortcuts import render
 import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
+from django.http import HttpResponseRedirect
 from .models import Rower
+from .forms import RowerForm
 
 
 def all_bikes(request):
@@ -13,6 +15,23 @@ def all_bikes(request):
         'bikes_list': bikes_list,
         'current_year': current_year,
     })
+
+
+def add_bike(request):
+    submitted = False
+    if request.method == 'POST':
+        form = RowerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/add_bike?submitted=True')
+    else:
+        form = RowerForm()
+        if 'submitted' in request.GET:
+            submitted = True
+
+    return render(request, 'rent/add_bike.html',
+                  {'form': form,
+                   'submitted': submitted})
 
 
 def home(request, year=datetime.now().year, month=datetime.now().strftime('%B')):

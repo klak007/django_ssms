@@ -1,0 +1,18 @@
+{% extends 'rent/base.html' %}
+{% block content %}
+    <h1>{{ title }}</h1>
+    <div style="text-align: center;">
+        <h1>Dodaj rower</h1>
+        {% if submitted %}
+            Udało się wysłać!
+        {% else %}
+
+                <form action = "" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value = "Submit" class="btn btn-secondary">
+        {% endif %}
+    </div>
+{% endblock %}
+
+
