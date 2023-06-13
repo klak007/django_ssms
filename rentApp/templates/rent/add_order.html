@@ -1,0 +1,21 @@
+{% extends 'rent/base.html' %}
+{% block content %}
+    <h1>{{ title }}</h1>
+    <div style="text-align: left;">
+        <h1>Stwórz zamówienie</h1>
+        {% if submitted %}
+            Pomyślnie utworzono zamówienie
+        {% else %}
+
+                <form action = "" method="post">
+
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <input type="submit" value = "Zamów" class="btn btn-outline-success">
+
+        {% endif %}
+    </div>
+{% endblock %}
+
+

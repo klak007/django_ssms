@@ -17,4 +17,7 @@ urlpatterns = [
     path('show_salon/<int:id_salonu>/', views.show_salon, name="show-salon"),
     path('search_bike/', views.search_bike, name="search-bike"),
     path('update_salon/<int:id_salonu>/', views.update_salon, name="update-salon"),
+    path('add_salon/', views.add_salon, name="add-salon"),
+    path('add_order', views.add_order, name="add-order"),
+    path('delete_salon/<int:id_salonu>/', views.delete_salon, name="delete-salon"),
 ]

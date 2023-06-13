@@ -20,6 +20,13 @@
           <li class="nav-item">
           <a class="nav-link" href="{% url 'list-salon' %}">Our places</a>
         </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'add-order' %}">Add order</a>
+        </li>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'add-salon' %}">Add salon</a>
+        </li>
 
       </ul>
       <form class="d-flex" method="POST" action="{% url 'search-bike' %}">

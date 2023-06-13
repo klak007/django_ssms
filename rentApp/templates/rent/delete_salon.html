@@ -2,16 +2,13 @@
 {% block content %}
 
     <div style="text-align: center;">
-        <h1> Aktualizacja salonu </h1>
+        <h1> Salon usunięty pomyślnie </h1>
         <form action="" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <br/>
-            <input type="submit" value="Aktualizuj salon" class="btn btn-success">
-
+            <input type="submit" value="Aktualizuj" class="btn btn-success">
         </form>
-        <br/>
-
     </div>
 {% endblock %}
 

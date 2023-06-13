@@ -9,12 +9,13 @@
         <tr>
             <td>
                 <a class="link-offset-2 link-underline link-opacity-75-hover link-underline-opacity-0" href="{% url 'show-salon' id_salonu=salon.id_salonu %}">
-             Nasz salon nr {{ salon.id_salonu }}: {{ salon.miasto }}, {{ salon.ulica }} </a>
+            Lokalizacja salonu: {{ salon.miasto }}, {{ salon.ulica }} </a>
             </td>
             <td align="right">
-                <a class="link-offset-2 link-underline link-opacity-75-hover link-underline-opacity-0" href="{% url 'update-salon' id_salonu=salon.id_salonu %}">
+                <a class="link-offset-2 link-underline link-opacity-75-hover link-underline-opacity-0 btn btn-secondary" href="{% url 'update-salon' id_salonu=salon.id_salonu %}">
                     Update
                 </a>
+                <a href="{% url 'delete-salon' salon.id_salonu %}" class="btn btn-danger">Usuń salon</a>
             </td>
         </tr>
 
