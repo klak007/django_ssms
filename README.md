@@ -36,18 +36,8 @@ DATABASES = {
         },
     },
 }
-The mos
+The most important thing was the engine and in this case, using Microsoft SQL Server 2019, engine is mssql. Name is the name of the database created in SSMS. User and password was made in the security section of properties of the database. SQL Server and Windows Authentication mode should be set in security page in properties of the server. 
+Port should be set to ''. Next important thing is setting the driver options ODBC Driver 17 for SQL Server with the params 'TrustServerCertificate' set to yes. Also in database should be added parameter.
 
-Then i added my app to installed apps in settings.py. Then i added cors headers to settings.py.
-Then i added my app urls to main urls.py. Then i run server and checked if it works.
-Then i added my database to databases section in settings.py.
-Then i created a model in models.py and made migrations. Then i created a serializer in serializers.py.
-Then i created a view in views.py. Then i created a urls.py in app folder and added path to my view.
-Then i run server and checked if it works.
-then i created a django project and app. in settings.py i added my database to databases section.
-then i created a model in models.py and made migrations. then i created a serializer in serializers.py.
-then i created a view in views.py. then i created a urls.py in app folder and added path to my view.
-then i added my app to installed apps in settings.py. then i added cors headers to settings.py.
-then i added my app urls to main urls.py. then i run server and checked if it works.
-then i added
+
 
