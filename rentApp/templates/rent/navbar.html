@@ -8,49 +8,73 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' '2023' 'July' %}">Calendar</a>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'bikes-list' %}">Bikes list</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'add-bike' %}">Add bike</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'list-salon' %}">Our places</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'add-order' %}">Add order</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{% url 'add-salon' %}">Add salon</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Salon
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'add-salon' %}">Dodaj salon</a></li>
-                        <li><a class="dropdown-item" href="{% url 'list-salon' %}">Salony</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Rowery
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'add-bike' %}">Dodaj rower</a></li>
-                        <li><a class="dropdown-item" href="{% url 'bikes-list' %}">Rowery</a></li>
-                    </ul>
-                </li>
+                {% if not user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'bikes-list' %}">Nasze rowery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'list-salon' %}">Nasze salony</a>
+                    </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Zamówienia
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'add-order' %}">Dodaj zamówienie</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'order-list' %}">Zamówienia</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Salon
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <li><a class="dropdown-item" href="{% url 'add-salon' %}">Dodaj salon</a></li>
+
+                            <li><a class="dropdown-item" href="{% url 'list-salon' %}">Salony</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Rowery
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <li><a class="dropdown-item" href="{% url 'add-bike' %}">Dodaj rower</a></li>
+
+                            <li><a class="dropdown-item" href="{% url 'bikes-list' %}">Rowery</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
 
 
             </ul>
+
             {% if user.is_authenticated %}
+                <button type="button" class="btn btn-primary position-relative me-2 disabled">
+                    Cześć, {{ user.username }}
+                    </span>
+                </button>
+
                 <li class="nav-item btn btn-outline-danger me-2">
                     <a class="nav-link" href="{% url 'logout' %} ">Logout</a>
                 </li>

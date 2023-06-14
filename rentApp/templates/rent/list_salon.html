@@ -12,6 +12,7 @@
                        href="{% url 'show-salon' id_salonu=salon.id_salonu %}">
                         Lokalizacja salonu: {{ salon.miasto }}, {{ salon.ulica }} </a>
                 </td>
+                {% if user.is_authenticated %}
                 <td align="right">
                     <a class="link-offset-2 link-underline link-opacity-75-hover link-underline-opacity-0 btn btn-secondary"
                        href="{% url 'update-salon' id_salonu=salon.id_salonu %}">
@@ -19,6 +20,7 @@
                     </a>
                     <a href="{% url 'delete-salon' salon.id_salonu %}" class="btn btn-danger">Usuń salon</a>
                 </td>
+                {% endif %}
             </tr>
 
         {% endfor %}

@@ -2,7 +2,7 @@
 {% block content %}
     {% if user.is_authenticated %}
         <div style="text-align: center;">
-            <h1> Salon usunięty pomyślnie </h1>
+            <h1> Rower usunięty pomyślnie </h1>
             <form action="" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -10,7 +10,6 @@
                 <input type="submit" value="Aktualizuj" class="btn btn-success">
             </form>
         </div>
-
     {% else %}
         <h1> Nie jesteś zalogowany</h1>
         <a class="btn btn-outline-secondary" href="{% url 'login' %}">Zaloguj się</a>

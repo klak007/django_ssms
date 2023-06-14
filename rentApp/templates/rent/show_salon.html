@@ -5,14 +5,39 @@
 
     <div class="card">
         <div class="card-header">
-            numer {{ salon.id_salonu }}
+            ID salonu: {{ salon.id_salonu }}
         </div>
         <div class="card-body">
             <h5 class="card-title">{{ salon.ulica }}</h5>
             <p class="card-text">{{ salon.miasto }}</p>
         </div>
     </div>
+    <br/>
+    {% if user.is_authenticated %}
 
+        {% for order in order_list %}
+            <div class="card" style="width: 30rem;">
+                <div class="card-header">
+                    Wypożyczenie ID: <strong>{{ order.id_wypozyczenia }}</strong>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Data wypożyczenia: {{ order.data_wypozyczenia }}</h5>
+                    <h5 class="card-title">Data zwrotu: {{ order.data_zwrotu }}</h5>
+                    <p class="card-text">
+                        <strong>Pracownik:</strong> {{ order.id_pracownika.imie }} {{ order.id_pracownika.nazwisko }}<br>
+                        <strong>Rower:</strong> {{ order.id_roweru.marka }}<br>
+                        <strong>Klient:</strong> {{ order.id_klienta.imie }} {{ order.id_klienta.nazwisko }}<br>
+                        <strong>Oplata:</strong> {{ order.id_oplaty.nazwa }} ({{ order.id_oplaty.kwota }} zł)<br>
+                        <strong>Salon:</strong> {{ order.id_pracownika.id_salonu.miasto }}, {{ order.id_pracownika.id_salonu.ulica }}<br>
+                        <!-- Dodaj inne informacje o wypożyczeniu -->
+                    </p>
+                    <a href="{% url 'show-order' id_wypozyczenia=order.id_wypozyczenia %}" class="btn btn-primary">Szczegóły
+                        wypożyczenia</a>
+                </div>
+            </div>
+            <br/>
+        {% endfor %}
+
+    {% endif %}
 {% endblock %}
-
 

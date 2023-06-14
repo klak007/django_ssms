@@ -1,0 +1,32 @@
+{% extends 'rent/base.html' %}
+
+{% block content %}
+    <h1>Zamówienie </h1>
+
+    <div class="card">
+        <div class="card-header">
+            ID zamówienia: {{ order.id_wypozyczenia }}
+        </div>
+        <div class="card-body">
+            <style>
+                .opis {
+                    color: grey;
+                }
+
+                .wartosc {
+                    font-size: 1.2em;
+                }
+            </style>
+            <h5 class="card-title">Pracownik: <strong>{{ order.id_pracownika.imie }}, {{ order.id_pracownika.nazwisko }} </strong></h5>
+            <p class="card-text">Klient: <strong>{{ order.id_klienta.imie }}, {{ order.id_klienta.nazwisko }}</strong></p>
+            <p class="card-text">Data wypożyczenia: <strong>{{ order.data_wypozyczenia }}</strong></p>
+            <p class="card-text">Data zwrotu: <strong>{{ order.data_zwrotu }} </strong></p>
+            <p class="card-text">
+                Rower: <strong>{{ order.id_roweru.kolor }}, {{ order.id_roweru.marka }}, {{ order.id_roweru.rodzaj_roweru }}</strong></p>
+            <p class="card-text">Cena: <strong>{{ order.id_oplaty.kwota }} {{ order.id_oplaty.waluta }}</strong></p>
+            <p class="card-text">ID roweru: <strong>{{ order.id_roweru.id_roweru }}</strong></p>
+        </div>
+    </div>
+
+
+{% endblock %}

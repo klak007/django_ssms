@@ -3,7 +3,7 @@ import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
 from django.http import HttpResponseRedirect
-from .models import Rower, Salon
+from .models import Rower, Salon, Wypozyczenia
 from .forms import RowerForm, SalonForm, WypozyczeniaForm
 from django.db.models import Q
 
@@ -18,6 +18,14 @@ def all_bikes(request):
     })
 
 
+def all_order(request):
+    order_list = Wypozyczenia.objects.all()
+
+    return render(request, 'rent/order.html', {
+        'order_list': order_list,
+    })
+
+
 def list_salons(request):
     salon_list = Salon.objects.all()
     return render(request, 'rent/list_salon.html', {
@@ -27,7 +35,14 @@ def list_salons(request):
 
 def show_salon(request, id_salonu):
     salon = get_object_or_404(Salon, id_salonu=id_salonu)
-    return render(request, 'rent/show_salon.html', {'salon': salon})
+    # order_list = Wypozyczenia.objects.all()
+    order_list = Wypozyczenia.objects.filter(id_pracownika__id_salonu=id_salonu)
+    return render(request, 'rent/show_salon.html', {'salon': salon, 'order_list': order_list})
+
+
+def show_order(request, id_wypozyczenia):
+    order = get_object_or_404(Wypozyczenia, id_wypozyczenia=id_wypozyczenia)
+    return render(request, 'rent/show_order.html', {'order': order})
 
 
 def add_order(request):
@@ -84,6 +99,18 @@ def delete_salon(request, id_salonu):
     salon = get_object_or_404(Salon, id_salonu=id_salonu)
     salon.delete()
     return redirect('/list_salon/')
+
+
+def delete_bike(request, id_roweru):
+    bike = get_object_or_404(Rower, id_roweru=id_roweru)
+    bike.delete()
+    return redirect('/bikes/')
+
+
+def delete_order(request, id_wypozyczenia):
+    order = get_object_or_404(Wypozyczenia, id_wypozyczenia=id_wypozyczenia)
+    order.delete()
+    return redirect('/order/')
 
 
 def add_salon(request):

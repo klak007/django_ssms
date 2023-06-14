@@ -3,6 +3,12 @@
     {% if user.is_authenticated %}
         <div style="text-align: center;">
             <h1> Aktualizacja salonu </h1>
+            Zalogowany jako: {{ user.username }}<br/><br/>
+            <br/>
+            Manager:
+            <br/>
+            {{  }}
+
             <form action="" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}

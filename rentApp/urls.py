@@ -20,4 +20,8 @@ urlpatterns = [
     path('add_salon/', views.add_salon, name="add-salon"),
     path('add_order', views.add_order, name="add-order"),
     path('delete_salon/<int:id_salonu>/', views.delete_salon, name="delete-salon"),
+    path('order/', views.all_order, name="order-list"),
+    path('show_order/<int:id_wypozyczenia>/', views.show_order, name="show-order"),
+    path('delete_bike/<int:id_roweru>/', views.delete_bike, name="delete-bike"),
+    path('delete_order/<int:id_wypozyczenia>/', views.delete_order, name="delete-order"),
 ]
