@@ -26,7 +26,24 @@
           <li class="nav-item ">
           <a class="nav-link" href="{% url 'add-salon' %}">Add salon</a>
         </li>
-
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Salon
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'add-salon' %}">Dodaj salon</a></li>
+            <li><a class="dropdown-item" href="{% url 'list-salon' %}">Salony</a></li>
+          </ul>
+        </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Rowery
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'add-bike' %}">Dodaj rower</a></li>
+            <li><a class="dropdown-item" href="{% url 'bikes-list' %}">Rowery</a></li>
+          </ul>
+        </li>
 
 
 
