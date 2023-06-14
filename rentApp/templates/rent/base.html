@@ -14,6 +14,15 @@
     {% include 'rent/navbar.html' %}
     <br/>
     <div class="container">
+        {% if messages %}
+
+            {% for message in messages %}
+                <div class="alert alert-primary">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+        {% endif %}
         {% block content %}
 
         {% endblock %}

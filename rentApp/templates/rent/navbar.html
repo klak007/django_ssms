@@ -4,8 +4,8 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
 
           <li class="nav-item">
           <a class="nav-link" href="{% url 'home' '2023' 'July' %}">Calendar</a>
@@ -23,16 +23,27 @@
           <li class="nav-item">
           <a class="nav-link" href="{% url 'add-order' %}">Add order</a>
         </li>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item ">
           <a class="nav-link" href="{% url 'add-salon' %}">Add salon</a>
         </li>
 
+
+
+
       </ul>
+        {% if user.is_authenticated %}
+                <li class="nav-item btn btn-outline-danger me-2">
+                    <a class="nav-link" href="{% url 'logout' %} ">Logout</a>
+                </li>
+              {% else %}
+                <li class="nav-item btn btn-outline-success me-2">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+              {% endif %}
       <form class="d-flex" method="POST" action="{% url 'search-bike' %}">
           {% csrf_token %}
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
-        <button class="btn btn-outline-success" type="submit">Search bikes</button>
+        <button class="btn btn-outline-primary" type="submit">Search</button>
       </form>
     </div>
   </div>
