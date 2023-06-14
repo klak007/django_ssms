@@ -1,67 +1,72 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href=" {% url 'home' %}">rentBikes</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
+    <div class="container-fluid">
+        <a class="navbar-brand" href=" {% url 'home' %}">rentBikes</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
 
-          <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' '2023' 'July' %}">Calendar</a>
-        </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' '2023' 'July' %}">Calendar</a>
+                </li>
 
-          <li class="nav-item">
-          <a class="nav-link" href="{% url 'bikes-list' %}">Bikes list</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="{% url 'add-bike' %}">Add bike</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="{% url 'list-salon' %}">Our places</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="{% url 'add-order' %}">Add order</a>
-        </li>
-          <li class="nav-item ">
-          <a class="nav-link" href="{% url 'add-salon' %}">Add salon</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Salon
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{% url 'add-salon' %}">Dodaj salon</a></li>
-            <li><a class="dropdown-item" href="{% url 'list-salon' %}">Salony</a></li>
-          </ul>
-        </li>
-          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Rowery
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{% url 'add-bike' %}">Dodaj rower</a></li>
-            <li><a class="dropdown-item" href="{% url 'bikes-list' %}">Rowery</a></li>
-          </ul>
-        </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'bikes-list' %}">Bikes list</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add-bike' %}">Add bike</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'list-salon' %}">Our places</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add-order' %}">Add order</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{% url 'add-salon' %}">Add salon</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Salon
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'add-salon' %}">Dodaj salon</a></li>
+                        <li><a class="dropdown-item" href="{% url 'list-salon' %}">Salony</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Rowery
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'add-bike' %}">Dodaj rower</a></li>
+                        <li><a class="dropdown-item" href="{% url 'bikes-list' %}">Rowery</a></li>
+                    </ul>
+                </li>
 
 
-
-      </ul>
-        {% if user.is_authenticated %}
+            </ul>
+            {% if user.is_authenticated %}
                 <li class="nav-item btn btn-outline-danger me-2">
                     <a class="nav-link" href="{% url 'logout' %} ">Logout</a>
                 </li>
-              {% else %}
+            {% else %}
+                <li class="nav-item btn btn-outline-primary me-2">
+                    <a class="nav-link" href="{% url 'register_user' %}">Register</a>
+                </li>
                 <li class="nav-item btn btn-outline-success me-2">
                     <a class="nav-link" href="{% url 'login' %}">Login</a>
                 </li>
-              {% endif %}
-      <form class="d-flex" method="POST" action="{% url 'search-bike' %}">
-          {% csrf_token %}
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
-        <button class="btn btn-outline-primary" type="submit">Search</button>
-      </form>
+            {% endif %}
+            <form class="d-flex" method="POST" action="{% url 'search-bike' %}">
+                {% csrf_token %}
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
     </div>
-  </div>
 </nav>

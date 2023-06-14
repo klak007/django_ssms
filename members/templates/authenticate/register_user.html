@@ -1,0 +1,24 @@
+{% extends 'rent/base.html' %}
+{% block content %}
+
+
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            Proszę poprawić błędy w formularzu
+        </div>
+    {% endif %}
+    <div class="shadow p-4 mb-5 bg-body rounded" style="text-align: left;">
+        <h1>Zarejestruj się się</h1>
+        {% if submitted %}
+            już zalogowano
+        {% else %}
+
+            <form action="{% url 'register_user' %}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <input type="submit" value="Zarejestruj się" class="btn btn-outline-success">
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -7,25 +7,22 @@
             już zalogowano
         {% else %}
 
-                <form action = "" method="post">
+            <form action="" method="post">
                 {% csrf_token %}
 
 
-                      <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">login</label>
-                        <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
-                      </div>
-                      <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">hasło</label>
-                        <input type="password" class="form-control" name="password">
-                      </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">login</label>
+                    <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">hasło</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
 
 
-
-
-
-                <input type="submit" value = "Zaloguj" class="btn btn-outline-success">
-                </form>
+                <input type="submit" value="Zaloguj" class="btn btn-outline-success">
+            </form>
         {% endif %}
     </div>
 {% endblock %}
