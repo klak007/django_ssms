@@ -3,7 +3,7 @@ import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
 from django.http import HttpResponseRedirect
-from .models import Rower, Salon, Wypozyczenia
+from .models import Rower, Salon, Wypozyczenia, Pracownicy
 from .forms import RowerForm, SalonForm, WypozyczeniaForm
 from django.db.models import Q
 
@@ -35,9 +35,12 @@ def list_salons(request):
 
 def show_salon(request, id_salonu):
     salon = get_object_or_404(Salon, id_salonu=id_salonu)
+
     # order_list = Wypozyczenia.objects.all()
     order_list = Wypozyczenia.objects.filter(id_pracownika__id_salonu=id_salonu)
-    return render(request, 'rent/show_salon.html', {'salon': salon, 'order_list': order_list})
+
+    return render(request, 'rent/show_salon.html',
+                  {'salon': salon, 'order_list': order_list, })
 
 
 def show_order(request, id_wypozyczenia):

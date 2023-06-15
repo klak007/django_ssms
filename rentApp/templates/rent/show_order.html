@@ -5,7 +5,7 @@
 
     <div class="card">
         <div class="card-header">
-            ID zamówienia: {{ order.id_wypozyczenia }}
+            ID zamówienia: <strong>{{ order.id_wypozyczenia }}</strong>
         </div>
         <div class="card-body">
             <style>
@@ -17,8 +17,8 @@
                     font-size: 1.2em;
                 }
             </style>
-            <h5 class="card-title">Pracownik: <strong>{{ order.id_pracownika.imie }}, {{ order.id_pracownika.nazwisko }} </strong></h5>
-            <p class="card-text">Klient: <strong>{{ order.id_klienta.imie }}, {{ order.id_klienta.nazwisko }}</strong></p>
+            <p class="card-title">Pracownik: <strong>{{ order.id_pracownika.imie }} {{ order.id_pracownika.nazwisko }} </strong></p>
+            <p class="card-text">Klient: <strong>{{ order.id_klienta.imie }} {{ order.id_klienta.nazwisko }}</strong></p>
             <p class="card-text">Data wypożyczenia: <strong>{{ order.data_wypozyczenia }}</strong></p>
             <p class="card-text">Data zwrotu: <strong>{{ order.data_zwrotu }} </strong></p>
             <p class="card-text">
