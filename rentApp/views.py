@@ -48,13 +48,38 @@ def show_order(request, id_wypozyczenia):
     return render(request, 'rent/show_order.html', {'order': order})
 
 
+# def add_order(request):
+#     submitted = False
+#     if request.method == 'POST':
+#         form = WypozyczeniaForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return HttpResponseRedirect('/add_order?submitted=True')
+#     else:
+#         form = WypozyczeniaForm()
+#         if 'submitted' in request.GET:
+#             submitted = True
+#
+#     return render(request, 'rent/add_order.html',
+#                   {'form': form,
+#                    'submitted': submitted})
+
 def add_order(request):
     submitted = False
     if request.method == 'POST':
         form = WypozyczeniaForm(request.POST)
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/add_order?submitted=True')
+            wypozyczenie = form.save(commit=False)
+            rower = wypozyczenie.id_roweru
+            if not Wypozyczenia.objects.filter(id_roweru=rower).exists():
+                wypozyczenie.save()
+                return HttpResponseRedirect('/add_order?submitted=True')
+            else:
+                return render(request, 'rent/add_order.html',
+                              {'form': form,
+                               'submitted': submitted,
+                               'error': 'Rower jest już wypożyczony'})
+                pass
     else:
         form = WypozyczeniaForm()
         if 'submitted' in request.GET:

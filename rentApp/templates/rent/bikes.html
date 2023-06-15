@@ -46,12 +46,15 @@
                     <span class="opis">Dla osoby o wzroście:</span>
                     <span class="wartosc">{{ bike.wysokosc }}</span>
                 </p>
+                <p>
+                    <span class="opis">ID roweru</span>
+                    <span class="wartosc">{{ bike.id_roweru }}</span>
+                </p>
 
 
-
-{#                <a href="#" class="btn btn-primary">Zamów</a>#}
+                {#                <a href="#" class="btn btn-primary">Zamów</a>#}
                 {% if user.is_authenticated %}
-                <a href="{% url 'delete-bike' bike.id_roweru %}" class="btn btn-danger">Usuń rower</a>
+                    <a href="{% url 'delete-bike' bike.id_roweru %}" class="btn btn-danger">Usuń rower</a>
                 {% endif %}
             </div>
         </div>
